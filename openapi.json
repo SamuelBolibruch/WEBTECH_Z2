@@ -1,0 +1,250 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API dokumentácia",
+    "description": "Dokumentácia pre viacero rôznych API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://node20.webte.fei.stuba.sk/Zadanie2SB"
+    }
+  ],
+  "paths": {
+    "/schedule_api.php": {
+      "get": {
+        "summary": "Získať všetky záznamy",
+        "responses": {
+          "200": {
+            "description": "Úspešná odpoveď",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer"
+                      },
+                      "subject": {
+                        "type": "string"
+                      },
+                      "room": {
+                        "type": "string"
+                      },
+                      "day": {
+                        "type": "string"
+                      },
+                      "teacher": {
+                        "type": "string"
+                      },
+                      "time_from": {
+                        "type": "string"
+                      },
+                      "time_to": {
+                        "type": "string"
+                      },
+                      "type_of_subject": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Záznamy neboli nájdené"
+          }
+        }
+      },
+      "post": {
+        "summary": "Pridať nový záznam",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subject": {
+                    "type": "string"
+                  },
+                  "room": {
+                    "type": "string"
+                  },
+                  "day": {
+                    "type": "string"
+                  },
+                  "teacher": {
+                    "type": "string"
+                  },
+                  "time_from": {
+                    "type": "string"
+                  },
+                  "time_to": {
+                    "type": "string"
+                  },
+                  "type_of_subject": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Záznam bol úspešne pridaný"
+          },
+          "400": {
+            "description": "Chýbajúce údaje pre pridanie záznamu"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Odstrániť záznam",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Záznam bol úspešne odstránený"
+          },
+          "400": {
+            "description": "Chýbajúce ID pre odstránenie záznamu"
+          },
+          "404": {
+            "description": "Záznam s daným ID nebol nájdený"
+          }
+        }
+      },
+      "put": {
+        "summary": "Aktualizovať záznam",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "subject": {
+                    "type": "string"
+                  },
+                  "room": {
+                    "type": "string"
+                  },
+                  "day": {
+                    "type": "string"
+                  },
+                  "teacher": {
+                    "type": "string"
+                  },
+                  "time_from": {
+                    "type": "string"
+                  },
+                  "time_to": {
+                    "type": "string"
+                  },
+                  "type_of_subject": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Záznam bol úspešne aktualizovaný"
+          },
+          "400": {
+            "description": "Chýbajúce ID pre úpravu záznamu"
+          },
+          "404": {
+            "description": "Záznam s daným ID nebol nájdený"
+          }
+        }
+      }
+    },
+    "/final_works_api.php": {
+      "get": {
+        "summary": "Získať voľné témy záverečných prác",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "study_type",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Úspešná odpoveď",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "teacher": {
+                        "type": "string"
+                      },
+                      "workspace": {
+                        "type": "string"
+                      },
+                      "program": {
+                        "type": "string"
+                      },
+                      "focus": {
+                        "type": "string"
+                      },
+                      "abstract": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Chýbajúce ID alebo typ štúdia"
+          }
+        }
+      }
+    }
+  }
+}

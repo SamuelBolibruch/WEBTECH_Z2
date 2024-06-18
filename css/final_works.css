@@ -1,0 +1,77 @@
+.input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.input-container select {
+    padding: 0.5em 1.5em; /* Nastavení polštáře pro všechny option elementy */
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
+#myTable {
+    border: 3px solid black;
+    border-collapse: collapse; /* Zlúčenie ohraničenia buniek */
+
+}
+
+.table-div {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#myTable tr {
+    border-bottom: 1px solid black; /* Čiara medzi riadkami */
+}
+
+/* Prvý stĺpec */
+table tr td:first-child {
+    cursor: pointer;
+    width: 40%;
+}
+
+/* Ostatné dva stĺpce */
+table tr td:nth-child(n+2) {
+    width: 30%;
+}
+
+/* Modálne Okno */
+.modal {
+    display: none; /* Skryté modálne okno na začiatku */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5); /* Čierna farba s priehľadnosťou */
+}
+
+/* Obsah Modálneho Okna */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Umiestnenie modálneho obsahu na stred */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Šírka modálneho okna */
+}
+
+/* Zavrieť Tlačidlo */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
